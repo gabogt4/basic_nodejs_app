@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloudbuild/docker'
-  args: ['build', '-t', 'basic-nodejs-app', '.']
+  args: ['build', '-t', 'basic-nodejs-app', '.', '--verbose']
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
 logsBucket: gs://for-build-looging
