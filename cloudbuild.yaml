@@ -6,4 +6,4 @@ steps:
 images: ['us-central1-docker.pkg.dev/ecommerce-434317/basic-nodejs-app:latest']
 options:
   defaultLogsBucketBehavior: REGIONAL_USER_OWNED_BUCKET
-  logsBucket: gs://for-build-looging
+logsBucket: gs://for-build-looging
