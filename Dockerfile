@@ -3,7 +3,7 @@
 FROM node:19-alpine
 
 # Create and change to the app directory.
-WORKDIR /usr/src/app
+WORKDIR /app
 
 # Copy application dependency manifests to the container image.
 # A wildcard is used to ensure both package.json AND package-lock.json are copied.
@@ -17,6 +17,8 @@ RUN npm install --production
 
 # Copy local code to the container image.
 COPY . ./
+
+EXPOSE 8080
 
 # Run the web service on container startup.
 CMD ["node", "index.js"]
