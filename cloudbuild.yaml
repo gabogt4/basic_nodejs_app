@@ -1,4 +1,7 @@
 steps:
-- name: 'gcr.io/cloudbuild/docker'
-  args: ['build', '-t', 'basic-nodejs-app', '.', '--verbose']
-logsBucket: gs://for-build-looging
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/ecommerce-434317/basic-nodejs-app/basic-nodejs-app:$COMMIT_SHA', '.']
+images:
+  - 'us-central1-docker.pkg.dev/ecommerce-434317/basic-nodejs-app/basic-nodejs-app:$COMMIT_SHA'
+options:
+  logging: CLOUD_LOGGING_ONLY
