@@ -13,7 +13,7 @@ steps:
     - 'deploy'
     - 'basic-nodejs-app'
     - '--image'
-    - 'gcr.io/ecommerce-434317/basic-nodejs-app:$COMMIT_SHA'
+    - 'us-central1-docker.pkg.dev/ecommerce-434317/basic-nodejs-app/basic-nodejs-app:$COMMIT_SHA'
     - '--region'
     - 'us-central1'
 images:
