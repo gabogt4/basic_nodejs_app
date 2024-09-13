@@ -3,9 +3,13 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-t', 'us-central1-docker.pkg.dev/ecommerce-434317/basic-nodejs-app/basic-nodejs-app:$COMMIT_SHA', '.']
 
-  - name: maven:3-openjdk-18-slim
-    entrypoint: mvn
-    args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Dsonar.organization=gt0593sonarcloud','-Dsonar.projectKey=gt0593sonarcloud_basic-nodejs-app','-Dsonar.token=68b6ef9ccb6730fe9ef96d7ab708265d9a63aae0']
+  - name: 'gcr.io/ecommerce-434317/sonar-scanner:latest'
+    args:
+    - '-Dsonar.host.url=https://sonarcloud.io'
+    - '-Dsonar.login=68b6ef9ccb6730fe9ef96d7ab708265d9a63aae0'
+    - '-Dsonar.projectKey=gt0593sonarcloud_basic-nodejs-app'
+    - '-Dsonar.organization=gt0593sonarcloud'
+    - '-Dsonar.sources=.'
     
     # Push the container image to Artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
