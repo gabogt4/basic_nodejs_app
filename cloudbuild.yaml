@@ -14,19 +14,32 @@ steps:
   - name: node
     entrypoint: npm
     args: ['install']
-  - name: 'us-central1-docker.pkg.dev/ecommerce-434317/sonar-scanner/sonar-scanner:5'
-    entrypoint: 'sonar-scanner'
-    args:
-      - '-X'
-      - '-Dsonar.host.url=https://sonarcloud.io'
-      - '-Dsonar.projectKey=gt0593sonarcloud_basic-nodejs-app'
-      - '-Dsonar.organization=gt0593sonarcloud'
-      - '-Dsonar.exclusions=Dockerfile,**/*.html,**/*.json,tests/**,**/*.yaml'
-      - '-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info'
-      - '-Dsonar.sources=.'
-  #    - '-Dsonar.tests=tests'
-    env:
-      - SONAR_TOKEN=2021fdd9704fb6d5378fcf9e817a873ee027bc46
+
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args: ['-c', 'echo "Hello, World!"']
+
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args: ['-c', 'pwd']
+
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args: ['-c', 'ls']
+    
+#  - name: 'us-central1-docker.pkg.dev/ecommerce-434317/sonar-scanner/sonar-scanner:5'
+#    entrypoint: 'sonar-scanner'
+#    args:
+#      - '-X'
+#      - '-Dsonar.host.url=https://sonarcloud.io'
+#      - '-Dsonar.projectKey=gt0593sonarcloud_basic-nodejs-app'
+#      - '-Dsonar.organization=gt0593sonarcloud'
+#      - '-Dsonar.exclusions=Dockerfile,**/*.html,**/*.json,tests/**,**/*.yaml'
+#      - '-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info'
+#      - '-Dsonar.sources=.'
+#  #    - '-Dsonar.tests=tests'
+#    env:
+#      - SONAR_TOKEN=2021fdd9704fb6d5378fcf9e817a873ee027bc46
     
     # Push the container image to Artifact Registry
   #- name: 'gcr.io/cloud-builders/docker'
