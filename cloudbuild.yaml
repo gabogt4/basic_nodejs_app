@@ -33,7 +33,7 @@ steps:
 
   - name: 'ubuntu'
     entrypoint: 'bash'
-    args: ['-c', 'ls -l /workspace']
+    args: ['-c', 'ls -la /workspace']
     
 #  - name: 'us-central1-docker.pkg.dev/ecommerce-434317/sonar-scanner/sonar-scanner:5'
 #    entrypoint: 'sonar-scanner'
