@@ -17,9 +17,15 @@ steps:
 
   - name: 'ubuntu'
     entrypoint: 'bash'
-    args: ['-c', 'mkdir /workspace/.scannerwork \
-    && chown scanner-cli:scanner-cli /workspace/.scannerwork \
-    && chmod -R 754 /workspace/.scannerwork']
+    args: ['-c', 'mkdir /workspace/.scannerwork']
+
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args: ['-c', 'chown scanner-cli:scanner-cli /workspace/.scannerwork']
+
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args: ['-c', 'chmod -R 754 /workspace/.scannerwork']
 
   - name: 'ubuntu'
     entrypoint: 'bash'
