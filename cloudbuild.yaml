@@ -20,7 +20,7 @@ steps:
       - '-Dsonar.exclusions=Dockerfile,**/*.html,**/*.json,tests/**,**/*.yaml'
       - '-Dsonar.javascript.lcov.reportPaths=coverage/lcov.info'
       - '-Dsonar.sources=.'
-      - '-Dsonar.tests=tests'
+  #    - '-Dsonar.tests=tests'
     env:
       - SONAR_TOKEN=68b6ef9ccb6730fe9ef96d7ab708265d9a63aae0
     
