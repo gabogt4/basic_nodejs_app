@@ -12,7 +12,7 @@ steps:
   #  - '-Dsonar.sources=.'
 
   - name: 'us-central1-docker.pkg.dev/ecommerce-434317/sonar-scanner/sonar-scanner:5'
-    entrypoint: 'sonar-scanner'
+    entrypoint: 'sonar-scanner:5'
     args:
       - '-Dsonar.host.url=https://sonarcloud.io'
       - '-Dsonar.projectKey=gt0593sonarcloud_basic-nodejs-app'
