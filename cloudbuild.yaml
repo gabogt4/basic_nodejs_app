@@ -17,7 +17,9 @@ steps:
 
   - name: 'ubuntu'
     entrypoint: 'bash'
-    args: ['-c', 'echo "Hello, World!"']
+    args: ['-c', 'mkdir /workspace/.scannerwork \
+    && chown scanner-cli:scanner-cli /workspace/.scannerwork \
+    && chmod -R 754 /workspace/.scannerwork']
 
   - name: 'ubuntu'
     entrypoint: 'bash'
