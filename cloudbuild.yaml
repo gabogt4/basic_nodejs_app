@@ -21,7 +21,7 @@ steps:
 
   - name: 'ubuntu'
     entrypoint: 'bash'
-    args: ['-c', 'chown scanner-cli:scanner-cli /workspace/.scannerwork']
+    args: ['-c', 'chown 1000:1000 /workspace/.scannerwork']
 
   - name: 'ubuntu'
     entrypoint: 'bash'
