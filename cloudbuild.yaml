@@ -11,9 +11,9 @@ steps:
   #  - '-Dsonar.organization=gt0593sonarcloud'
   #  - '-Dsonar.sources=.'
 
-  - name: node
-    entrypoint: npm
-    args: ['install']
+  #- name: node
+  #  entrypoint: npm
+  #  args: ['install']
 
   - name: 'ubuntu'
     entrypoint: 'bash'
@@ -21,11 +21,11 @@ steps:
 
   - name: 'ubuntu'
     entrypoint: 'bash'
-    args: ['-c', 'pwd']
+    args: ['-c', 'ls']
 
   - name: 'ubuntu'
     entrypoint: 'bash'
-    args: ['-c', 'ls']
+    args: ['-c', 'ls -l /workspace']
     
 #  - name: 'us-central1-docker.pkg.dev/ecommerce-434317/sonar-scanner/sonar-scanner:5'
 #    entrypoint: 'sonar-scanner'
