@@ -1,28 +1,27 @@
-
-
-
-  #- name: 'gcr.io/ecommerce-434317/sonar-scanner:latest'
-  #  args:
-  #  - '-Dsonar.host.url=https://sonarcloud.io'
-  #  - '-Dsonar.login=68b6ef9ccb6730fe9ef96d7ab708265d9a63aae0'
-  #  - '-Dsonar.projectKey=gt0593sonarcloud_basic-nodejs-app'
-  #  - '-Dsonar.organization=gt0593sonarcloud'
-  #  - '-Dsonar.sources=.'
-
   - name: node
     entrypoint: npm
     args: ['install']
 
-    #Preparar entorno para sonar-scanner
-  - name: 'gcr.io/cloud-builders/gcloud'
+  - name: 'ubuntu'
     entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        mkdir /workspace/.scannerwork
-        chown 1000:1000 /workspace/.scannerwork
-        chmod -R 777 /workspace/.scannerwork
-            
+    args: ['-c', 'mkdir /workspace/.scannerwork']
+
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args: ['-c', 'chown 1000:1000 /workspace/.scannerwork']
+
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args: ['-c', 'chmod -R 777 /workspace/.scannerwork']
+
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args: ['-c', 'ls']
+
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args: ['-c', 'ls -la /workspace']
+    
   - name: 'us-central1-docker.pkg.dev/ecommerce-434317/sonar-scanner/sonar-scanner:5'
     entrypoint: 'sonar-scanner'
     args:
@@ -61,23 +60,23 @@
         fi
         
     # Build the container image using definition on Dockerfile
-  #- name: 'gcr.io/cloud-builders/docker'
-  #  args: ['build', '-t', 'us-central1-docker.pkg.dev/ecommerce-434317/basic-nodejs-app/basic-nodejs-app:$COMMIT_SHA', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/ecommerce-434317/basic-nodejs-app/basic-nodejs-app:$COMMIT_SHA', '.']
 
     # Push the container image to Artifact Registry
-  #- name: 'gcr.io/cloud-builders/docker'
-  #  args: ['push', 'us-central1-docker.pkg.dev/ecommerce-434317/basic-nodejs-app/basic-nodejs-app:$COMMIT_SHA']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/ecommerce-434317/basic-nodejs-app/basic-nodejs-app:$COMMIT_SHA']
     # Deploy container image to Cloud Run
-  #- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-  #  entrypoint: gcloud
-  #  args:
-  #  - 'run'
-  #  - 'deploy'
-  #  - 'basic-nodejs-app'
-  #  - '--image'
-  #  - 'us-central1-docker.pkg.dev/ecommerce-434317/basic-nodejs-app/basic-nodejs-app:$COMMIT_SHA'
-  #  - '--region'
-  #  - 'us-central1'
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+    - 'run'
+    - 'deploy'
+    - 'basic-nodejs-app'
+    - '--image'
+    - 'us-central1-docker.pkg.dev/ecommerce-434317/basic-nodejs-app/basic-nodejs-app:$COMMIT_SHA'
+    - '--region'
+    - 'us-central1'
 images:
   - 'us-central1-docker.pkg.dev/ecommerce-434317/basic-nodejs-app/basic-nodejs-app:$COMMIT_SHA'
 options:
