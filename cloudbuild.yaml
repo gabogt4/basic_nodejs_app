@@ -6,6 +6,10 @@ steps:
 
   - name: 'ubuntu'
     entrypoint: 'bash'
+    args: ['-c', 'env']
+
+  - name: 'ubuntu'
+    entrypoint: 'bash'
     args: ['-c', 'mkdir /workspace/.scannerwork']
 
   - name: 'ubuntu'
